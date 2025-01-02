@@ -1,13 +1,26 @@
-app = "baserow-app"
+app = 'baserow-app'
+primary_region = 'bom'
 
 [build]
-  dockerfile = "Dockerfile"
-
-[[services]]
-  name = "web"
-  internal_port = 80
-  cmd = "gunicorn baserow.config.wsgi:application --bind 0.0.0.0:80"
-  protocol = "http"
+  dockerfile = "backend/Dockerfile"
 
 [env]
+  SECRET_KEY = "gf7nya*j##f8jjf*rg-cie)+rozxp61ku@t*dezn8q18pw$n%b"
+  ALLOWED_HOSTS = "baserow-app.fly.dev"
+  DATABASE_URL = "postgres://postgres:oXpjIKq3D7M82xY@baserow-db.flycast:5432"
   DJANGO_SETTINGS_MODULE = "baserow.config.settings.production"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+[experimental]
+  auto_heal = false
