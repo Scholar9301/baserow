@@ -14,7 +14,6 @@ primary_region = 'bom'
   internal_port = 80
   cmd = "gunicorn baserow.config.wsgi:application --bind 0.0.0.0:80"
   protocol = "http"
-  concurrency = 1
 
 [env]
   SECRET_KEY = "gf7nya*j##f8jjf*rg-cie)+rozxp61ku@t*dezn8q18pw$n%b"
