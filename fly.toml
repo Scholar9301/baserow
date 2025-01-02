@@ -8,7 +8,6 @@ app = "baserow-app"
   internal_port = 80
   cmd = "gunicorn baserow.config.wsgi:application --bind 0.0.0.0:80"
   protocol = "http"
-  concurrency = 1
 
 [env]
   DJANGO_SETTINGS_MODULE = "baserow.config.settings.production"
